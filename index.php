@@ -40,10 +40,21 @@ require_once __DIR__ . '/classes/PremiumUser.php';
         <section class="users">
             <h2>Users</h2>
             <?php // User instance
-            $new_user = new User('Franco', 'Franchi', 'hello@test.com', 56); ?>
+            $new_user = new User('Franco', 'Franchi', 'hello@test.com'); ?>
             <h3><?php echo $new_user->getFullName(); ?></h3>
             <ul>
                 <li><strong>Email:</strong> <?php echo $new_user->getMail(); ?></li>
+                <li>
+                    <strong>Age:</strong> 
+                    <?php
+                    try {
+                        $new_user->setAge(57);
+                        echo $new_user->getAge() . ' years old.';
+                    } catch (Exception $e) {
+                        echo 'Attenzione: ' . $e->getMessage();
+                    }
+                    ?>
+                </li>
                 <li><strong>Discount percentage:</strong> <?php echo $new_user->getDiscount(); ?>%</li>
                 <li>
                     <strong>Final price:</strong> 
@@ -55,10 +66,22 @@ require_once __DIR__ . '/classes/PremiumUser.php';
         <section class="premium-users">
             <h2>Premium Users</h2>
             <?php // User instance
-            $new_premium_user = new PremiumUser('Carlo', 'Giannicoli', 'pippo@pluto.com', 33, true); ?>
+            $new_premium_user = new PremiumUser('Carlo', 'Giannicoli', 'pippo@pluto.com', true); ?>
             <h3><?php echo $new_premium_user->getFullName(); ?></h3>
             <ul>
                 <li><strong>Email:</strong> <?php echo $new_premium_user->getMail(); ?></li>
+                <li>
+                    <strong>Age:</strong> 
+                    <?php
+                    try {
+                        $new_premium_user->setAge(33);
+
+                        echo $new_premium_user->getAge() . ' years old.';
+                    } catch (Exception $e) {
+                        echo 'Attenzione: ' . $e->getMessage();
+                    }
+                    ?>
+                </li>
                 <li><strong>Discount percentage:</strong> <?php echo $new_premium_user->getDiscount(); ?>%</li>
                 <li>
                     <strong>Final price:</strong> 

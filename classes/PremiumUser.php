@@ -12,8 +12,8 @@ class PremiumUser extends User {
     private $is_premium;
 
     // Constructor
-    function __construct($_name, $_lastname, $_mail, $_age, $_is_premium = false) {
-        parent::__construct($_name, $_lastname, $_mail, $_age);
+    function __construct($_name, $_lastname, $_mail, $_is_premium = false) {
+        parent::__construct($_name, $_lastname, $_mail);
         $this->is_premium = $_is_premium;
     }
 
