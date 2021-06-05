@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . '/classes/User.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,8 +17,15 @@
     </header>
 
     <main>
-        <section class="products">
-            CONTENT HERE
+        <section class="users">
+            <h2>Users</h2>
+            <?php // User instance
+            $new_user = new User('Franco', 'Franchi', 'hello@test.com', 54); ?>
+            <h3><?php echo $new_user->getFullName(); ?></h3>
+            <ul>
+                <li>Email: <?php echo $new_user->getMail(); ?></li>
+                <li>Discount percentage: <?php echo $new_user->getDiscount(); ?>%</li>
+            </ul>
         </section>
     </main>
 
