@@ -2,7 +2,7 @@
 /**
  * USER CLASS
  * 
- * parent class
+ * parent class for UserPremium
  */
 
 class User {
