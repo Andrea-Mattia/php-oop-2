@@ -24,7 +24,7 @@ require_once __DIR__ . '/classes/PremiumUser.php';
         <section class="products">
             <h2>Products</h2>
             <?php // Item instance
-            $new_item = new Item(10, 'Scarpe', 'Moda', 100); ?>
+            $new_item = new Item(10, 'Scarpe', 'Moda', 19.99); ?>
             <ol>
                 <li><strong>Buyer ID:</strong> <?php echo $new_item->getUserID(); ?></li>
                 <li>
@@ -46,7 +46,7 @@ require_once __DIR__ . '/classes/PremiumUser.php';
                 <li><strong>Email:</strong> <?php echo $new_user->getMail(); ?></li>
                 <li>
                     <strong>Age:</strong> 
-                    <?php
+                    <?php // Setting age and catching exceptions
                     try {
                         $new_user->setAge(57);
                         echo $new_user->getAge() . ' years old.';
@@ -58,7 +58,10 @@ require_once __DIR__ . '/classes/PremiumUser.php';
                 <li><strong>Discount percentage:</strong> <?php echo $new_user->getDiscount(); ?>%</li>
                 <li>
                     <strong>Final price:</strong> 
-                    <?php echo $new_item->getPrice() - $new_user->getDiscount(); ?>€
+                    <?php // Getting final price
+                    echo 
+                    number_format($new_item->getPrice() - ($new_item->getPrice() * $new_user->getDiscount() / 100), 2); 
+                    ?>€
                 </li>
             </ul>
         </section>
@@ -72,10 +75,9 @@ require_once __DIR__ . '/classes/PremiumUser.php';
                 <li><strong>Email:</strong> <?php echo $new_premium_user->getMail(); ?></li>
                 <li>
                     <strong>Age:</strong> 
-                    <?php
+                    <?php // Setting age and catching exceptions
                     try {
                         $new_premium_user->setAge(33);
-
                         echo $new_premium_user->getAge() . ' years old.';
                     } catch (Exception $e) {
                         echo 'Attenzione: ' . $e->getMessage();
@@ -85,7 +87,10 @@ require_once __DIR__ . '/classes/PremiumUser.php';
                 <li><strong>Discount percentage:</strong> <?php echo $new_premium_user->getDiscount(); ?>%</li>
                 <li>
                     <strong>Final price:</strong> 
-                    <?php echo $new_item->getPrice() - $new_premium_user->getDiscount(); ?>€
+                    <?php // Getting final price
+                    echo 
+                    number_format($new_item->getPrice() - ($new_item->getPrice() * $new_premium_user->getDiscount() / 100), 2); 
+                    ?>€
                 </li>
             </ul>
         </section>
